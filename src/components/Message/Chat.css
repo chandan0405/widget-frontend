@@ -1,0 +1,223 @@
+
+/* General styles for chat widget */
+.chat-widget {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 400px; /* Default width for desktop */
+  height: 75vh; /* Default height for desktop */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff; /* White background */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out; /* Smooth transition for resizing */
+  z-index: 1000;
+  font-size: 16px; /* Smaller font size */
+  font-family: plus-jakarta-sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji"; /* Updated font family */
+}
+
+.chat-widget.minimized {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  bottom: 20px;
+  right: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles for mobile responsiveness */
+@media (max-width: 768px) {
+  .chat-widget {
+    width: 90vw; /* Adjust width to 90% of viewport width */
+    height: 80vh; /* Adjust height to 80% of viewport height */
+    right: 5vw; /* Center horizontally */
+    bottom: 5vh; /* Center vertically */
+  }
+
+  .chat-input input {
+    font-size: 16px; /* Adjust font size */
+  }
+
+  .chat-header {
+    height: 10%; /* Adjust height */
+  }
+}
+
+.chat-header {
+  width: 100%; /* Full width */
+  height: 76px; /* Fixed height */
+  background-color: lightgray; /* Light gray background */
+  border-bottom: 1px solid lightgray; /* Light gray border at the bottom */
+  color: #000; /* Black text color */
+  padding: 8px; /* Adjusted padding */
+  cursor: pointer;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  position: relative; /* Ensure the button is correctly positioned */
+}
+
+.chat-header button {
+  position: absolute;
+  right: 10px; /* Position the button to the right */
+  background: none;
+  border: none;
+  color: gray; /* Gray text color */
+  cursor: pointer;
+}
+
+.chat-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.ai-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 8px; /* Space between logo and message */
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 8px; /* Adjusted padding */
+  overflow-y: auto;
+  background-color: #333333; /* Dark gray background */
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message-container.assistant,
+.chat-message-container.rep {
+  display: flex;
+  align-items: flex-start; /* Align logo and message at the top */
+  margin-bottom: 15px; /* Padding between messages */
+}
+
+.chat-message-container.user {
+  display: flex;
+  justify-content: flex-end; /* Align user message to the right */
+  margin-bottom: 15px; /* Padding between messages */
+}
+
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%; /* Maximum width as percentage */
+}
+
+.message-label {
+  font-size: 10px; /* Very small font size */
+  color: lightgray; /* Light Gray color */
+  margin-bottom: 4px; /* Space below the label */
+  text-align: left; /* Align text to the left */
+}
+
+.chat-message {
+  margin-bottom: 4px; /* Adjusted margin to make space for timestamp */
+  padding: 7px 13px; /* Added padding for sleeker look */
+  border-radius: 12px; /* Rounded corners for bubbles */
+  word-wrap: break-word; /* Ensure long words break correctly */
+  width: fit-content; /* Automatically adjust width based on content */
+  text-align: left; /* Align text to the left for all messages */
+  position: relative; /* Ensure the timestamp can be positioned relatively */
+}
+
+.chat-message.user {
+  background-color: rgba(255, 0, 0, 0.781);
+  color: #fff; /* White text color */
+  align-self: flex-end; /* Align to the right */
+  margin-left: 5%; /* Add padding on the left as percentage */
+  margin-right: 5%; /* Add padding on the right as percentage */
+}
+
+.chat-message.assistant {
+  background: rgba(0, 0, 0, 0.829);
+  color: white; /* White text color */
+  align-self: flex-start; /* Align to the left */
+  margin-right: 10%; /* Add padding on the right as percentage */
+}
+
+.chat-message.rep {
+  background-color: rgb(0, 187, 250); /* Light gray background */
+  color: white; /* White text color */
+  align-self: flex-start; /* Align to the left */
+  margin-right: 10%; /* Add padding on the right as percentage */
+}
+
+.timestamp {
+  font-size: 10px; /* Very small font size */
+  color: lightgray; /* Light Gray color */
+  margin-top: -4px; /* Negative margin to bring it closer to the message box */
+  margin-bottom: 8px; /* Space below the timestamp */
+  text-align: left; /* Align text to the left */
+}
+
+.timestamp.user {
+  text-align: right;
+}
+
+.timestamp.assistant,
+.timestamp.rep {
+  text-align: left;
+}
+
+.chat-input {
+  display: flex;
+  padding: 8px; /* Adjusted padding */
+  border-top: none;
+  background-color: #333333; /* Dark grey background */
+  position: relative; /* Ensure proper positioning of buttons */
+  height: 5.8%;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Smaller font size */
+  padding-right: 40px; /* Adjust padding to make space for the arrow */
+}
+
+.chat-input .send-button {
+  position: absolute;
+  right: 10px; /* Adjust positioning */
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: gray; /* Gray text color */
+}
+
+.chat-input .send-button:hover {
+  color: darkred; /* Darker red hover color */
+}
+
+.request-support {
+  text-align: center;
+  padding: 8px;
+  background-color: lightgray; /* Light gray background */
+  border-top: 1px solid #ccc;
+  height: 6%;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+.request-support a {
+  color: rgb(85, 102, 177); /* Light blue text color */
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.request-support a:hover {
+  text-decoration: underline;
+}
